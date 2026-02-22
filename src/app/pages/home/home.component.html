@@ -1,0 +1,141 @@
+<app-hero
+  title="Crafting Unforgettable Moments"
+  subtitle="From dreamy weddings to spectacular corporate events, we bring your vision to life with elegance and precision."
+  ctaText="Plan Your Event"
+  ctaLink="/contact"
+  secondaryCtaText="View Portfolio"
+  secondaryCtaLink="/portfolio">
+</app-hero>
+
+<!-- ── Stats Banner ── -->
+<section class="stats-banner section-dark">
+  <div class="container stats-grid">
+    @for (stat of stats; track stat.label) {
+      <div class="stat-item fade-in">
+        <span class="stat-value">{{ stat.value }}</span>
+        <span class="stat-label">{{ stat.label }}</span>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- ── About Intro ── -->
+<section class="section section-cream">
+  <div class="container about-intro">
+    <div class="about-text fade-in">
+      <span class="eyebrow">Who We Are</span>
+      <h2>Making Every Event a Masterpiece</h2>
+      <div class="gold-divider" style="margin:16px 0 24px 0"></div>
+      <p>At <strong>PCR Events</strong>, we are passionate event planners with over 12 years of experience creating magical experiences across weddings, engagements, birthdays, and corporate celebrations.</p>
+      <p style="margin-top:14px">Our dedicated team of designers, coordinators, and decorators work tirelessly to understand your unique vision and bring it to life — beautifully, flawlessly, and within your budget.</p>
+      <a routerLink="/about" class="btn btn-accent" style="margin-top:28px">Discover Our Story</a>
+    </div>
+    <div class="about-image fade-in delay-2">
+      <img src="assets/images/service-decoration.png" alt="PCR Events team at work" loading="lazy">
+      <div class="about-badge">
+        <i class="fas fa-award"></i>
+        <span>12+ Years<br>of Excellence</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Services Preview ── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">What We Do</span>
+      <h2>Our Signature Services</h2>
+      <div class="gold-divider"></div>
+      <p>Comprehensive event planning solutions crafted with creativity, care, and commitment to perfection.</p>
+    </div>
+    <div class="services-grid">
+      @for (svc of services.slice(0,4); track svc.title) {
+        <div class="service-card fade-in">
+          <div class="service-img-wrap">
+            <img [src]="svc.img" [alt]="svc.title" loading="lazy">
+            <div class="service-icon"><i [class]="svc.icon"></i></div>
+          </div>
+          <div class="service-body">
+            <h3>{{ svc.title }}</h3>
+            <p>{{ svc.desc }}</p>
+            <a [routerLink]="svc.link" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      }
+    </div>
+    <div style="text-align:center; margin-top:40px">
+      <a routerLink="/services" class="btn btn-outline">View All Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Portfolio Preview ── -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Our Work</span>
+      <h2>A Glimpse of Our Portfolio</h2>
+      <div class="gold-divider"></div>
+      <p>Every event we plan becomes a cherished memory. Here are a few of our favourite moments.</p>
+    </div>
+    <div class="portfolio-grid">
+      @for (item of portfolioItems; track item.title) {
+        <div class="portfolio-card fade-in">
+          <img [src]="item.img" [alt]="item.title" loading="lazy">
+          <div class="portfolio-overlay">
+            <span class="portfolio-category">{{ item.category }}</span>
+            <h3>{{ item.title }}</h3>
+            <a routerLink="/portfolio" class="btn btn-outline-white btn-sm">View More</a>
+          </div>
+        </div>
+      }
+    </div>
+    <div style="text-align:center; margin-top:40px">
+      <a routerLink="/portfolio" class="btn btn-primary">Explore Full Portfolio</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Testimonials Preview ── -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow" style="color:var(--color-primary)">Client Love</span>
+      <h2 style="color:#fff">What Our Clients Say</h2>
+      <div class="gold-divider"></div>
+    </div>
+    <div class="testimonials-grid">
+      @for (t of testimonials; track t.name) {
+        <div class="testimonial-card fade-in">
+          <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+          <p class="testimonial-text">{{ t.text }}</p>
+          <div class="testimonial-stars">
+            @for (s of [1,2,3,4,5]; track s) { <i class="fas fa-star"></i> }
+          </div>
+          <div class="testimonial-author">
+            <div class="author-initials">{{ t.name.charAt(0) }}</div>
+            <div>
+              <strong>{{ t.name }}</strong>
+              <span>{{ t.role }}</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+    <div style="text-align:center; margin-top:40px">
+      <a routerLink="/testimonials" class="btn btn-outline-white">Read All Reviews</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA Strip ── -->
+<section class="cta-strip">
+  <div class="container cta-content">
+    <div>
+      <h2>Ready to Create Your Perfect Event?</h2>
+      <p>Let's start planning the most memorable day of your life.</p>
+    </div>
+    <a routerLink="/contact" class="btn btn-primary cta-btn">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
+  </div>
+</section>

@@ -1,0 +1,48 @@
+<app-hero
+  title="Our Happy Clients"
+  subtitle="Real stories from real people whose most special moments we've had the joy of planning."
+  backgroundImage="assets/images/service-birthday.png"
+  [overlay]="0.65"
+  height="60vh">
+</app-hero>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Client Reviews</span>
+      <h2>Words That Warm Our Hearts</h2>
+      <div class="gold-divider"></div>
+      <p>Over 500 events and counting — here's what our clients have to say about their PCR Events experience.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      @for (t of testimonials; track t.name) {
+        <div class="t-card fade-in">
+          <div class="t-quote"><i class="fas fa-quote-left"></i></div>
+          <p class="t-text">{{ t.text }}</p>
+          <div class="t-stars">
+            @for (s of getStars(t.stars); track $index) {
+              <i class="fas fa-star"></i>
+            }
+          </div>
+          <div class="t-author">
+            <div class="t-avatar">{{ t.name.charAt(0) }}</div>
+            <div>
+              <strong>{{ t.name }}</strong>
+              <span>{{ t.role }}</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="t-cta">
+  <div class="container" style="text-align:center">
+    <h2>You Could Be Our Next Success Story</h2>
+    <p>Join hundreds of happy clients and let us make your event unforgettable.</p>
+    <a routerLink="/contact" class="btn btn-primary" style="margin-top:28px">Plan My Event <i class="fas fa-arrow-right"></i></a>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+<app-hero
+  title="Our Event Planning Services"
+  subtitle="Five specialised services to make every occasion extraordinary — crafted with care, delivered with excellence."
+  backgroundImage="assets/images/service-corporate.png"
+  ctaText="Book a Consultation"
+  ctaLink="/contact"
+  height="70vh">
+</app-hero>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">What We Offer</span>
+      <h2>Comprehensive Event Solutions</h2>
+      <div class="gold-divider"></div>
+      <p>From intimate ceremonies to grand galas, we plan and execute events that leave lasting impressions.</p>
+    </div>
+
+    @for (svc of services; track svc.title; let i = $index) {
+      <div class="service-row" [class.reverse]="i % 2 !== 0">
+        <div class="service-image fade-in">
+          <img [src]="svc.img" [alt]="svc.title" loading="lazy">
+          <div class="service-badge"><i [class]="svc.icon"></i></div>
+        </div>
+        <div class="service-details fade-in delay-2">
+          <span class="eyebrow">Service 0{{ i + 1 }}</span>
+          <h2>{{ svc.title }}</h2>
+          <div class="gold-divider" style="margin:14px 0 20px 0"></div>
+          <p>{{ svc.desc }}</p>
+          <ul class="features-list">
+            @for (feat of svc.features; track feat) {
+              <li><i class="fas fa-check-circle"></i> {{ feat }}</li>
+            }
+          </ul>
+          <a routerLink="/contact" class="btn btn-accent" style="margin-top:24px">Enquire Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="services-cta">
+  <div class="container" style="text-align:center">
+    <h2>Can't Find What You're Looking For?</h2>
+    <p>We offer completely custom event packages tailored to your unique needs and budget.</p>
+    <a routerLink="/contact" class="btn btn-primary" style="margin-top:28px">Talk to Our Planners</a>
+  </div>
+</section>

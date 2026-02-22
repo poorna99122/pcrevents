@@ -1,0 +1,60 @@
+<app-hero
+  title="Our Event Portfolio"
+  subtitle="A curated showcase of moments we've had the privilege to create. Each event tells a unique story."
+  backgroundImage="assets/images/service-engagement.png"
+  ctaText="Plan Your Event"
+  ctaLink="/contact"
+  height="70vh">
+</app-hero>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Our Work</span>
+      <h2>Gallery of Memories</h2>
+      <div class="gold-divider"></div>
+      <p>Browse by category to explore our diverse portfolio of beautifully executed events.</p>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="filter-tabs">
+      @for (cat of categories; track cat) {
+        <button class="filter-btn"
+          [class.active]="activeCategory() === cat"
+          (click)="setCategory(cat)">
+          {{ cat }}
+        </button>
+      }
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid">
+      @for (item of filteredItems; track item.title) {
+        <div class="gallery-card fade-in">
+          <img [src]="item.img" [alt]="item.title" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-category">{{ item.category }}</span>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+
+    @if (filteredItems.length === 0) {
+      <div class="empty-state">
+        <i class="fas fa-images"></i>
+        <p>No items found for this category.</p>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="portfolio-cta">
+  <div class="container" style="text-align:center">
+    <h2>Love What You See?</h2>
+    <p>Let's create something equally spectacular for your special occasion.</p>
+    <a routerLink="/contact" class="btn btn-primary" style="margin-top:28px">Start Planning <i class="fas fa-arrow-right"></i></a>
+  </div>
+</section>

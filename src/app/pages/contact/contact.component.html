@@ -1,0 +1,127 @@
+<app-hero
+  title="Let's Plan Your Dream Event"
+  subtitle="Fill in the form below and our expert planners will get in touch within 24 hours to discuss your vision."
+  backgroundImage="assets/images/hero-wedding.png"
+  [overlay]="0.65"
+  height="60vh">
+</app-hero> 
+
+<section class="section">
+  <div class="container contact-wrap">
+
+    <!-- Form -->
+    <div class="contact-form-col fade-in">
+      <span class="eyebrow">Send an Enquiry</span>
+      <h2>Tell Us About Your Event</h2>
+      <div class="gold-divider" style="margin:14px 0 28px 0"></div>
+
+      @if (submitSuccess()) {
+        <div class="success-message">
+          <i class="fas fa-check-circle"></i>
+          <div>
+            <strong>Thank you! We've received your enquiry.</strong>
+            <p>Our team will reach out to you within 24 hours.</p>
+          </div>
+        </div>
+      } @else {
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+
+          <div class="form-row">
+            <div class="form-group" [class.error]="submitted() && f['name'].errors">
+              <label for="name">Full Name *</label>
+              <input id="name" type="text" formControlName="name" placeholder="Your full name">
+              @if (submitted() && f['name'].errors?.['required']) { <span class="err">Name is required.</span> }
+              @if (submitted() && f['name'].errors?.['minlength']) { <span class="err">Minimum 2 characters.</span> }
+            </div>
+            <div class="form-group" [class.error]="submitted() && f['phone'].errors">
+              <label for="phone">Phone Number *</label>
+              <input id="phone" type="tel" formControlName="phone" placeholder="+91 98765 43210">
+              @if (submitted() && f['phone'].errors?.['required']) { <span class="err">Phone is required.</span> }
+              @if (submitted() && f['phone'].errors?.['pattern']) { <span class="err">Enter a valid phone number.</span> }
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" [class.error]="submitted() && f['email'].errors">
+              <label for="email">Email Address *</label>
+              <input id="email" type="email" formControlName="email" placeholder="you@example.com">
+              @if (submitted() && f['email'].errors?.['required']) { <span class="err">Email is required.</span> }
+              @if (submitted() && f['email'].errors?.['email']) { <span class="err">Enter a valid email.</span> }
+            </div>
+            <div class="form-group" [class.error]="submitted() && f['eventType'].errors">
+              <label for="eventType">Event Type *</label>
+              <select id="eventType" formControlName="eventType">
+                <option value="">Select event type</option>
+                @for (type of eventTypes; track type) {
+                  <option [value]="type">{{ type }}</option>
+                }
+              </select>
+              @if (submitted() && f['eventType'].errors?.['required']) { <span class="err">Please select an event type.</span> }
+            </div>
+          </div>
+
+          <div class="form-group" [class.error]="submitted() && f['eventDate'].errors">
+            <label for="eventDate">Preferred Event Date *</label>
+            <input id="eventDate" type="date" formControlName="eventDate">
+            @if (submitted() && f['eventDate'].errors?.['required']) { <span class="err">Event date is required.</span> }
+          </div>
+
+          <div class="form-group" [class.error]="submitted() && f['message'].errors">
+            <label for="message">Your Message *</label>
+            <textarea id="message" formControlName="message" rows="5" placeholder="Tell us about your event — expected guests, venue preference, theme, budget, etc."></textarea>
+            @if (submitted() && f['message'].errors?.['required']) { <span class="err">Message is required.</span> }
+            @if (submitted() && f['message'].errors?.['minlength']) { <span class="err">Please write at least 10 characters.</span> }
+          </div>
+
+          <button type="submit" class="btn btn-accent submit-btn">
+            Send Enquiry <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      }
+    </div>
+
+    <!-- Contact Info Sidebar -->
+    <div class="contact-info-col fade-in delay-2">
+      <div class="info-card">
+        <h3>Get In Touch</h3>
+        <p>We'd love to hear about your upcoming event. Our team is here to help you every step of the way.</p>
+        <div class="info-items">
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <strong>Visit Us</strong>
+              <span>123 4th Cross Street, Madhapur, Hyderabad, Telangana 500081</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <strong>Call Us</strong>
+              <a href="tel:+918185021930">+91 8185021930</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <strong>Email Us</strong>
+              <a href="mailto:hello@pcrevents.com">hello&#64;pcrevents.com</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <strong>Business Hours</strong>
+              <span>Monday – Saturday: 9 AM – 7 PM</span>
+            </div>
+          </div>
+        </div>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

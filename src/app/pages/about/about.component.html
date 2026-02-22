@@ -1,0 +1,91 @@
+<app-hero
+  title="Our Story, Our Passion"
+  subtitle="Over a decade of crafting extraordinary events with heart, creativity, and an unwavering dedication to your vision."
+  backgroundImage="assets/images/service-decoration.png"
+  ctaText="Explore Services"
+  ctaLink="/services"
+  height="70vh">
+</app-hero>
+
+<!-- ── Company Story ── -->
+<section class="section section-cream">
+  <div class="container story-grid">
+    <div class="story-image fade-in">
+      <img src="assets/images/hero-wedding.png" alt="PCR Events at work" loading="lazy">
+    </div>
+    <div class="story-text fade-in delay-2">
+      <span class="eyebrow">Our Journey</span>
+      <h2>12 Years of Creating Magic</h2>
+      <div class="gold-divider" style="margin:14px 0 22px 0"></div>
+      <p>PCR Events was founded in 2013 by Poorna Chandra Rao with one simple belief: every event should tell a story as unique as the people celebrating it.</p>
+      <p>What started as a boutique wedding planning studio in Mumbai has grown into a full-service event management company trusted by over 500 families and corporations across India.</p>
+      <p>Today we are a passionate team of over 50 professionals — designers, coordinators, decorators, and logistics experts — all united by the love of creating unforgettable moments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Mission & Vision ── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Our Purpose</span>
+      <h2>Mission &amp; Vision</h2>
+      <div class="gold-divider"></div>
+    </div>
+    <div class="mv-grid">
+      <div class="mv-card mission fade-in">
+        <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
+        <h3>Our Mission</h3>
+        <p>To deliver extraordinary event experiences that reflect the unique personality and dreams of every client, through impeccable planning, creative excellence, and dedicated service.</p>
+      </div>
+      <div class="mv-card vision fade-in delay-2">
+        <div class="mv-icon"><i class="fas fa-eye"></i></div>
+        <h3>Our Vision</h3>
+        <p>To be India's most trusted and celebrated event planning brand — synonymous with elegance, innovation, and the art of creating timeless memories for every occasion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Why Choose Us ── -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Why Us</span>
+      <h2>The PCR Events Difference</h2>
+      <div class="gold-divider"></div>
+      <p>Six reasons why thousands of families trust us with their most important days.</p>
+    </div>
+    <div class="why-grid">
+      @for (item of whyUs; track item.title) {
+        <div class="why-card fade-in">
+          <div class="why-icon"><i [class]="item.icon"></i></div>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── Team ── -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow" style="color:var(--color-primary)">Meet The Team</span>
+      <h2 style="color:#fff">The Faces Behind the Magic</h2>
+      <div class="gold-divider"></div>
+    </div>
+    <div class="team-grid">
+      @for (member of team; track member.name) {
+        <div class="team-card fade-in">
+          <div class="team-avatar" [style.background]="'linear-gradient(135deg,' + member.color + ',#1a1a2e)'">
+            <span>{{ member.initials }}</span>
+          </div>
+          <h3>{{ member.name }}</h3>
+          <p>{{ member.role }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+<nav class="navbar" [class.scrolled]="isScrolled()">
+  <div class="nav-container">
+    <!-- Logo -->
+    <a class="nav-logo" routerLink="/" (click)="closeMenu()">
+      <span class="logo-icon"><i class="fas fa-heart"></i></span>
+      <span class="logo-text">PCR <span>Events</span></span>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <ul class="nav-links">
+      @for (link of navLinks; track link.path) {
+        <li>
+          <a [routerLink]="link.path"
+             routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: link.path === '/' }">
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <!-- CTA Button (desktop) -->
+    <a routerLink="/contact" class="btn btn-primary nav-cta" (click)="closeMenu()">Book Now</a>
+
+    <!-- Hamburger -->
+    <button class="hamburger" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen()" aria-label="Toggle menu">
+      <span [class.open]="menuOpen()"></span>
+      <span [class.open]="menuOpen()"></span>
+      <span [class.open]="menuOpen()"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" [class.open]="menuOpen()">
+    <ul>
+      @for (link of navLinks; track link.path) {
+        <li>
+          <a [routerLink]="link.path"
+             routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+             (click)="closeMenu()">
+            {{ link.label }}
+          </a>
+        </li>
+      }
+      <li><a routerLink="/contact" class="btn btn-primary mobile-cta" (click)="closeMenu()">Book Now</a></li>
+    </ul>
+  </div>
+</nav>

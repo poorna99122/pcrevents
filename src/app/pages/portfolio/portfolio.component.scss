@@ -1,0 +1,46 @@
+.eyebrow { display: block; font-size: .85rem; letter-spacing: .18em; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 10px; }
+
+.filter-tabs {
+  display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px;
+}
+.filter-btn {
+  padding: 10px 24px; border-radius: 50px; border: 2px solid var(--color-border);
+  background: #fff; color: var(--color-text); font-size: .88rem; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase; cursor: pointer;
+  transition: var(--transition);
+  &:hover { border-color: var(--color-primary); color: var(--color-primary); }
+  &.active { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-dark); }
+}
+
+.gallery-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
+  @media (max-width: 768px) { grid-template-columns: 1fr; }
+  @media (max-width: 1024px) and (min-width: 769px) { grid-template-columns: repeat(2,1fr); }
+}
+.gallery-card {
+  position: relative; border-radius: var(--radius); overflow: hidden;
+  height: 300px; cursor: pointer;
+  img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+  &:hover img { transform: scale(1.08); }
+  &:hover .gallery-overlay { opacity: 1; }
+}
+.gallery-overlay {
+  position: absolute; inset: 0; opacity: 0; transition: opacity var(--transition);
+  background: linear-gradient(to top, rgba(26,26,46,.9) 50%, transparent);
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 24px;
+  span.gallery-category { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--color-primary); font-weight: 700; }
+  h3 { color: #fff; font-size: 1.1rem; margin: 6px 0 8px; }
+  p { color: rgba(255,255,255,.75); font-size: .85rem; }
+}
+
+.empty-state {
+  text-align: center; padding: 64px 0; color: var(--color-text-light);
+  i { font-size: 3rem; margin-bottom: 16px; display: block; opacity: .4; }
+}
+
+.portfolio-cta {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-primary-dark));
+  padding: 72px 0;
+  h2 { color: #fff; font-size: clamp(1.5rem,3vw,2rem); margin-bottom: 12px; }
+  p { color: rgba(255,255,255,.8); }
+}

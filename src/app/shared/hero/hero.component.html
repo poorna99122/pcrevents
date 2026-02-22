@@ -1,0 +1,26 @@
+<section class="hero"
+  [style.height]="height"
+  [style.minHeight]="height === '100vh' ? '500px' : ''"
+  [style.backgroundImage]="'url(' + backgroundImage + ')'">
+  <div class="hero-overlay" [style.background]="'rgba(26,26,46,' + overlay + ')'"></div>
+  <div class="hero-content" [class.centered]="centered">
+    <div class="container">
+      <p class="hero-eyebrow fade-in">✦ PCR Events ✦</p>
+      <h1 class="hero-title fade-in delay-1">{{ title }}</h1>
+      <p class="hero-subtitle fade-in delay-2">{{ subtitle }}</p>
+      @if (ctaText || secondaryCtaText) {
+        <div class="hero-actions fade-in delay-3">
+          @if (ctaText) {
+            <a [routerLink]="ctaLink" class="btn btn-primary">{{ ctaText }}</a>
+          }
+          @if (secondaryCtaText) {
+            <a [routerLink]="secondaryCtaLink" class="btn btn-outline-white">{{ secondaryCtaText }}</a>
+          }
+        </div>
+      }
+    </div>
+  </div>
+  <div class="hero-scroll-indicator">
+    <span></span>
+  </div>
+</section>

@@ -1,0 +1,5 @@
+[build]
+publish = "dist/event-planner/browser"
+
+[functions]
+directory = "netlify/functions"
